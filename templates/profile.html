@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<title>{{name}}</title>
+	<link rel="shortcut icon" href="/static/media/profile.png">
+	<link rel="stylesheet" type="text/css" href="/static/style/profile.css">
+</head>
+<body>
+
+<video src="/static/media/background.mp4" id="vdo" autoplay muted loop></video>
+
+<div id="content">
+	<div id="details">
+		<img src="/static/media/profile.png" class="c-img">
+		<div class="c">
+			<p class="c-p" id="tt">{{name}}</p>
+			<p class="c-p"><a style="text-decoration:none;color: black;" href="mailto:{{email}}">{{email}}</a></p>
+			<p class="c-p"><a style="text-decoration:none;color: black;" href="tel://{{phone}}">{{phone}}</a></p>
+		</div>
+	</div>
+	{% for i in properties %}
+		<div class="container">
+			<img class="container-img" src="/static/properties/{{i['image']}}">
+			<div class="container-info">
+				<p class="container-p"><a class="container-a" href="/profile/{{i['username']}}">{{name}}</a></p>
+				<p class="container-p">Rent - {{i['price']}} /month</p>
+				<p class="container-p">{{i['address']}}</p>
+				<p class="container-p">{{i['city']}}</p>
+				<p class="container-p">Area : {{i['area']}} (sq m)</p>
+				<p class="container-p">Bedrooms : {{i['bedroom']}}</p>
+				<p class="container-p">Bathrooms : {{i['bathroom']}}</p>
+				<p class="container-p">Additionals : {{i['info']}}</p>
+				<a href="mailto:{{email}}" style="text-decoration: none;"><button class="n-btn">Enquiry</button></a>
+			</div>
+		</div>
+	{% endfor %}
+
+</div>
+
+</body>
+</html>

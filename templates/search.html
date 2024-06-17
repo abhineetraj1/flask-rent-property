@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Search</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="shortcut icon" href="/static/media/favicon.png">
+	<link rel="stylesheet" type="text/css" href="/static/style/search.css">
+</head>
+<body>
+
+<video src="/static/media/background.mp4" id="vdo" autoplay muted loop></video>
+
+<div id="content">
+	<form id="search" method="POST" action="/">
+		<select name="city" id="cty">
+			<option>Itanagar (Arunachal Pradesh)</option>
+			<option>Dispur (Assam)</option>
+			<option>Patna (Bihar)</option>
+			<option>Raipur (Chhattisgarh)</option>
+			<option>Panaji (Goa)</option>
+			<option>Gandhinagar (Gujarat)</option>
+			<option>Chandigarh (Haryana & Punjab)</option>
+			<option>Shimla (Himachal Pradesh)</option>
+			<option>Ranchi (Jharkhand)</option>
+			<option>Bengaluru (Karnataka)</option>
+			<option>Thiruvananthapuram (Kerala)</option>
+			<option>Bhopal (Madhya Pradesh)</option>
+			<option>Mumbai (Maharashtra)</option>
+			<option>Imphal (Manipur)</option>
+			<option>Shillong (Meghalaya)</option>
+			<option>Aizawl (Mizoram)</option>
+			<option>Kohima (Nagaland)</option>
+			<option>Bhubaneswar (Odisha)</option>
+			<option>Chandigarh (Punjab)</option>
+			<option>Jaipur (Rajasthan)</option>
+			<option>Gangtok (Sikkim)</option>
+			<option>Chennai (Tamil Nadu)</option>
+			<option>Hyderabad (Telangana)</option>
+			<option>Agartala (Tripura)</option>
+			<option>Lucknow (Uttar Pradesh)</option>
+			<option>Dehradun (Uttarakhand)</option>
+			<option>Kolkata (West Bengal)</option>
+		</select>
+		<button class="btn">
+			<i class="material-icons" style="font-size: 19px;color: white;">search</i>
+		</button>
+	</form>
+	<div id="list">
+		{% for i in properties %}
+			<div class="container">
+				<img class="container-img" src="/static/properties/{{i['image']}}">
+				<div class="container-info">
+					<p class="container-p"><a class="container-a" href="/profile/{{i['username']}}">{{i['name']}}</a></p>
+					<p class="container-p">Rent: {{i['price']}}</p>
+					<p class="container-p">{{i['address']}}</p>
+					<p class="container-p">{{i['city']}}</p>
+					<p class="container-p">{{i['area']}}</p>
+					<p class="container-p">{{i['bedroom']}}</p>
+					<p class="container-p">{{i['bathroom']}}</p>
+					<p class="container-p">{{i['info']}}</p>
+					<button class="n-btn">Enquire</button>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</div>
+</body>
+</html>

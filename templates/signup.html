@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<title>Sign Up</title>
+	<link rel="shortcut icon" href="/static/media/favicon.png">
+	<link rel="stylesheet" type="text/css" href="/static/style/login.css">
+</head>
+<body>
+<video src="/static/media/background.mp4" id="vdo" autoplay muted loop></video>
+
+<div id="content">
+	<center>
+		<form method="POST" action="/signup">
+			<p id="tt">Register</p>
+			{% if msg %}
+				<p id="err">{{msg}}</p>
+			{% endif %}
+			<input class="inpt" type="text" name="name" placeholder="Enter your name">
+			<input class="inpt" type="number" name="phone" placeholder="Enter phone number">
+			<input class="inpt" type="email" name="email" placeholder="Enter your email">
+			<input class="inpt" type="text" name="username" placeholder="Enter new username">
+			<input class="inpt" type="password" name="password" placeholder="Enter password">
+			<button id="frm-btn">Register</button>
+			<p class="lnk">
+				<a class="frm-a" href="/">home</a>
+				<a class="frm-a" href="/signin">login</a>
+			</p>
+		</form>
+	</center>
+</div>
+
+</body>
+</html>

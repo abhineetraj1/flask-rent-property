@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<title>Dashboard</title>
+	<link rel="shortcut icon" href="/static/media/favicon.png">
+	<link rel="stylesheet" type="text/css" href="/static/style/dashboard.css">
+</head>
+<body>
+<video src="/static/media/background.mp4" id="vdo" autoplay muted loop></video>
+
+<div id="content">
+	<center>
+		<form method="POST" action="/post" enctype='multipart/form-data' id="form">
+			<p id="tt">Add property</p>
+			{% if msg %}
+				<p id="err">{{msg}}</p>
+			{% endif %}
+			<div id="part1">
+				<label class="n-btn">
+					Select image
+					<input type="file" name="file">
+				</label>
+			</div>
+			<div id="part2">
+				<input type="text" name="username" value="{{username}}">
+				<input type="text" name="name" value="{{name}}">
+				<input type="number" name="phone" value="{{phone}}">
+			</div>
+			<div id="part3">
+				<input class="inpt" type="number" name="price" placeholder="Enter rent price">
+				<input class="inpt" type="text" name="address" placeholder="Enter address">
+				<select name="city" id="cty" class="inpt">
+					<option>Itanagar (Arunachal Pradesh)</option>
+					<option>Dispur (Assam)</option>
+					<option>Patna (Bihar)</option>
+					<option>Raipur (Chhattisgarh)</option>
+					<option>Panaji (Goa)</option>
+					<option>Gandhinagar (Gujarat)</option>
+					<option>Chandigarh (Haryana & Punjab)</option>
+					<option>Shimla (Himachal Pradesh)</option>
+					<option>Ranchi (Jharkhand)</option>
+					<option>Bengaluru (Karnataka)</option>
+					<option>Thiruvananthapuram (Kerala)</option>
+					<option>Bhopal (Madhya Pradesh)</option>
+					<option>Mumbai (Maharashtra)</option>
+					<option>Imphal (Manipur)</option>
+					<option>Shillong (Meghalaya)</option>
+					<option>Aizawl (Mizoram)</option>
+					<option>Kohima (Nagaland)</option>
+					<option>Bhubaneswar (Odisha)</option>
+					<option>Chandigarh (Punjab)</option>
+					<option>Jaipur (Rajasthan)</option>
+					<option>Gangtok (Sikkim)</option>
+					<option>Chennai (Tamil Nadu)</option>
+					<option>Hyderabad (Telangana)</option>
+					<option>Agartala (Tripura)</option>
+					<option>Lucknow (Uttar Pradesh)</option>
+					<option>Dehradun (Uttarakhand)</option>
+					<option>Kolkata (West Bengal)</option>
+				</select>
+				<input class="inpt" type="number" name="area" placeholder="Enter area (in sq m)">
+				<input class="inpt" type="number" name="bedroom" placeholder="No. of bedrooms">
+				<input class="inpt" type="number" name="bathroom" placeholder="No. of bathrooms">
+				<input class="inpt" type="text" name="info" placeholder="Additional information">
+				<button id="frm-btn">Add</button>
+			</div>
+		</form>
+	</center>
+	<div>
+		{% for i in properties %}
+			<div class="container">
+				<img class="container-img" src="/static/properties/{{i['image']}}">
+				<div class="container-info">
+					<p class="container-p"><a class="container-a" href="/profile/{{i['username']}}">{{name}}</a></p>
+					<p class="container-p">Rent: {{i['price']}} per month</p>
+					<p class="container-p">{{i['address']}}</p>
+					<p class="container-p">{{i['city']}}</p>
+					<p class="container-p">Area: {{i['area']}} sq m</p>
+					<p class="container-p">Bedrooms: {{i['bedroom']}}</p>
+					<p class="container-p">Bathrooms: {{i['bathroom']}}</p>
+					<p class="container-p">Additional : {{i['info']}}</p>
+					<form method="POST" action="/delete" class="delete">
+						<div class="hide">
+							<input type="text" name="username" value="{{username}}">
+							<input type="password" name="password" value="{{password}}">
+							<input type="text" name="name" value="{{name}}">
+							<input type="text" name="_id" value="{{i['_id']}}">
+							<input type="number" name="phone" value="{{phone}}">
+						</div>
+						<button class="n-btn">Delete</button>
+					</form>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</div>
+
+<button id="add_post">
+	<i class="material-icons" style="color: black;font-size: 23px;" id="add_p">add</i>
+</button>
+<button id="logout">
+	<i class="material-icons" style="color: black;font-size: 23px;">home</i>
+</button>
+<script type="text/javascript">
+	if (localStorage.length == 0) {
+		localStorage.setItem("phone","{{phone}}");
+		localStorage.setItem("username","{{username}}");
+		localStorage.setItem("password","{{password}}");
+	}
+</script>
+<script type="text/javascript" src="/static/script/dashboard.js"></script>
+</body>
+</html>

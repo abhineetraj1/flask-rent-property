@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<title>Sign in</title>
+	<link rel="shortcut icon" href="/static/media/favicon.png">
+	<link rel="stylesheet" type="text/css" href="/static/style/login.css">
+</head>
+<body>
+<video src="/static/media/background.mp4" id="vdo" autoplay muted loop></video>
+
+<div id="content">
+	<center>
+		<form method="POST" action="/signin">
+			<p id="tt">Login</p>
+			{% if msg %}
+				<p id="err">{{msg}}</p>
+			{% endif %}
+			<input class="inpt" type="text" name="username" placeholder="Enter your username">
+			<input class="inpt" type="password" name="password" placeholder="Enter your password">
+			<button id="frm-btn">Login</button>
+			<p class="lnk">
+				<a class="frm-a" href="/">home</a>
+				<a class="frm-a" href="/signup">register</a>
+			</p>
+		</form>
+	</center>
+</div>
+</body>
+</html>
